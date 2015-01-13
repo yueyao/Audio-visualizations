@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>     <style>
+    body { font-family:'Open Sans', serif; font-size:100%;}
+    .contentWrapper { width:800px; margin:auto; font-size:22px; font-weight:200;}
+    h1 { font-size:60px; font-weight:300;}
+    .area { position:relative;
+        background:#f8f8f8;
+        background:-webkit-linear-gradient(#f0f0f0,#f8f8f8);
+        background:-moz-linear-gradient(#f0f0f0,#f8f8f8);
+        background:-ms-linear-gradient(#f0f0f0,#f8f8f8);
+        width:360px; height:360px;
+        margin:0 auto;
+    }.bar { position:absolute; bottom:0;
+         box-shadow:0px -2px 0 rgb(0,255,0);
+         background:black;
+         -webkit-transition:0.2s ease all ;
+     }
+
+    #demo{
+        position: relative;
+        margin:0 auto;
+        margin-left: 20px;
+    }
+</style>
+</head>
+<body>
+<h4>test</h4>
+
+<div id="demo">
+    <div id="bars" class="area"></div>
+</div>
+
+<script src="../audioVisualizationData.js"></script>
+<script src="http://cdn.staticfile.org/jquery/1.10.1/jquery.js"></script>
+<audio id="r0audio" src="Equinox%20(No%20Choir).mp3"></audio>
+<script>
+
+
+    var render = (function(){
+
+        var barsArr = 0,
+                initialized = false,
+                barsEl;
+
+        var height = 360;
+
+        var init = function(count) {
+            var count = count
+            var width = 360;
+            var barWidth = (width/count) >> 0;
+            barsEl = $('#bars');
+
+            for(var i = 0; i < count; i++ ){
+                var nunode = $('<div></div>');
+                nunode.addClass("bar").css({
+                    width:barWidth,
+                    left:barWidth*i
+                })
+                barsArr++
+                barsEl.append(nunode)
+            }
+            initialized = true;
+        };
+        var max = 256;
+
+        var renderFrame = function(frequencyData) {
+            for(var i = 0; i < barsArr; i++) {
+                $(".bar").eq(i).css({
+                    height: Number((frequencyData[i]/max)*height)
+                })
+            }
+        };
+
+        return {
+            //初始化参数 用于设置 可视化基础结构
+            init:init,
+            //更新画面
+            renderFrame:renderFrame,
+            //
+
+            isInitialized: function() {
+                return initialized;
+            }
+
+        }
+    })()
+    visualization({
+        id:"r0audio",
+        loop:true,
+        render:render
+    }).start()
+</script>
+</body>
+</html>
