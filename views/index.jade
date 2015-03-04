@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1.h1=title
+  div#box
+    ul#mlist
+      - for (var i = 0; i < musics.length; ++i) {
+      li
+        a(href="javascript:;",data-src="#{musics[i]}") #{musics[i]}
+      - }
+    div#mview
+      div#view
+      div#select
+        a(href="javascript:;") Dot
+        a(href="javascript:;").active Column
+
+
+
+  script(src="/javascripts/audioVisualization.js")
+  script(src="/javascripts/index.js")

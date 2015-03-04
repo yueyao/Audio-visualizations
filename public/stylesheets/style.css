@@ -1,0 +1,99 @@
+*{
+  padding:0;
+  margin:0;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+hr{
+  border:none;
+  height:1px;
+  background: #e8e8e8;
+  margin:10px 0;
+}
+a {
+  color: #00B7FF;
+}
+
+.h1{
+  background: #34B57C;
+  color:#fff;
+  text-align: center;
+  padding:40px 0;
+}
+#box{
+  width:1000px;
+  position: relative;
+  height:600px;
+  overflow: hidden;
+  margin:0 auto;
+}
+#mlist{
+  width:240px;
+  height:500px;
+  padding:0;
+  margin:0;
+  position: absolute;
+  left:0;
+  top:35px;
+  border:2px solid #34B57C;
+}
+#mlist li{
+  list-style: none;
+  height:32px;
+  background: #fff;
+}
+#mlist a.active{
+  background: #79CFA7;
+  color:#fff;
+}
+#mlist li a{
+  display: block;
+  line-height: 32px;
+  width:100%;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color:#E57368;
+}
+#mview{
+  width:740px;
+  top:35px;
+  border:2px solid #34B57C;
+  position: absolute;
+  right:0;
+  height:500px;
+}
+#view{
+  width:680px;
+  position: absolute;
+  top:50px;
+  left:30px;
+  height:400px;
+  border:1px solid #fff;
+}
+#select{
+  width:680px;
+  position: absolute;
+  bottom:10px;
+  text-align: center;
+}
+#select a{
+  width:100px;
+  height:25px;
+  line-height: 25px;
+  display: inline-block;
+  padding:0 10px;
+  color:#34B57C;
+  text-decoration: none;
+  background: #fff;
+  border:2px solid #34B57C;
+}
+#select a.active{
+  background:#34B57C ;
+  color:#fff;
+}
